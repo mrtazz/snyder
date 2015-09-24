@@ -24,5 +24,7 @@ size_t MetricsRegistry::Increment(const std::string& name, uint64_t count) {
 }
 
 size_t MetricsRegistry::Gauge(const std::string& name, uint64_t value) {
+  std::lock_guard<std::mutex> lock(gaugesMutex);
+  gaugesRegistry[name] = value;
   return 0;
 }
