@@ -29,3 +29,6 @@ m4
 *gcno
 html
 coverage.info
+usr
+*.rpm
+*.deb

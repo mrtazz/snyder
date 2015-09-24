@@ -26,3 +26,21 @@ coverage.info: test
 
 coverage-html: coverage.info
 	./utils/lcov-1.11/bin/genhtml -t "snyder coverage report" --legend --show-details coverage.info --output-directory html
+
+local-install:
+	$(MAKE) install PREFIX=usr
+
+NAME=snyder
+VERSION = $(shell git describe --tags --always --dirty)
+BUILDER = $(shell echo "`git config user.name` <`git config user.email`>")
+PKG_RELEASE ?= 1
+PROJECT_URL="https://github.com/mrtazz/$(NAME)"
+FPM_FLAGS= --name $(NAME) --version $(VERSION) --iteration $(PKG_RELEASE) --epoch 1 --license MIT --maintainer "$(BUILDER)" --url $(PROJECT_URL) --vendor mrtazz usr
+
+rpm:
+	  fpm -t rpm -s dir $(FPM_FLAGS)
+
+deb:
+	  fpm -t deb -s dir $(FPM_FLAGS)
+
+packages: local-install rpm deb
