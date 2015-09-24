@@ -14,10 +14,15 @@ MetricsRegistry::~MetricsRegistry() {
 }
 
 size_t MetricsRegistry::Increment(const std::string& name) {
-
+  this->Increment(name, 1);
   return 0;
 }
 size_t MetricsRegistry::Increment(const std::string& name, uint64_t count) {
+  std::lock_guard<std::mutex> lock(counterMutex);
+  counterRegistry[name] += count;
+  return 0;
+}
 
+size_t MetricsRegistry::Gauge(const std::string& name, uint64_t value) {
   return 0;
 }

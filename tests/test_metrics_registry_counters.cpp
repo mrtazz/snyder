@@ -7,15 +7,15 @@
 #include "snyder/metrics_registry.h"
 
 // The fixture for testing class Foo.
-class MetricsRegistryTest : public ::testing::Test
+class MetricsRegistryCounterTest : public ::testing::Test
 {
  protected:
 
-    MetricsRegistryTest()
+    MetricsRegistryCounterTest()
     {
     }
 
-    virtual ~MetricsRegistryTest()
+    virtual ~MetricsRegistryCounterTest()
     {
     }
 
@@ -30,7 +30,7 @@ class MetricsRegistryTest : public ::testing::Test
 };
 
 // Tests that a simple mustache tag is replaced
-TEST_F(MetricsRegistryTest, TestAddSimpleCounter)
+TEST_F(MetricsRegistryCounterTest, TestAddSimpleCounter)
 {
   auto reg = new Snyder::MetricsRegistry();
   reg->Increment("foo");
@@ -38,7 +38,7 @@ TEST_F(MetricsRegistryTest, TestAddSimpleCounter)
 
   EXPECT_EQ(1, counters["foo"]);
 }
-TEST_F(MetricsRegistryTest, TestAddCounterWithSpecifiedValue)
+TEST_F(MetricsRegistryCounterTest, TestAddCounterWithSpecifiedValue)
 {
   auto reg = new Snyder::MetricsRegistry();
   reg->Increment("foo", 5);
@@ -46,7 +46,7 @@ TEST_F(MetricsRegistryTest, TestAddCounterWithSpecifiedValue)
 
   EXPECT_EQ(5, counters["foo"]);
 }
-TEST_F(MetricsRegistryTest, TestIncrementExistingCounter)
+TEST_F(MetricsRegistryCounterTest, TestIncrementExistingCounter)
 {
   auto reg = new Snyder::MetricsRegistry();
   reg->Increment("foo");
