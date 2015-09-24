@@ -27,12 +27,12 @@ namespace Snyder {
       size_t Increment(const std::string& name);
       size_t Increment(const std::string& name, uint64_t count);
 
-      const MetricsStore& GetCounters() const {return counterRegistry;}
+      MetricsStore GetCounters();
 
       // Gauges
       size_t Gauge(const std::string& name, uint64_t value);
 
-      const MetricsStore& GetGauges() const {return gaugesRegistry;}
+      MetricsStore GetGauges();
 
     private:
       MetricsRegistry(const MetricsRegistry&) = delete;

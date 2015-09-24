@@ -28,3 +28,13 @@ size_t MetricsRegistry::Gauge(const std::string& name, uint64_t value) {
   gaugesRegistry[name] = value;
   return 0;
 }
+
+MetricsStore MetricsRegistry::GetCounters() {
+  std::lock_guard<std::mutex> lock(counterMutex);
+  return counterRegistry;
+}
+
+MetricsStore MetricsRegistry::GetGauges() {
+  std::lock_guard<std::mutex> lock(gaugesMutex);
+  return gaugesRegistry;
+}
