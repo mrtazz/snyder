@@ -6,14 +6,15 @@
 
 ## Overview
 
-Snyder is a metrics library for C++11. It supports tracking of a number of a
-number of metric types from different threads.
+Snyder is a metrics library for C++11. It supports tracking of a number of
+metric types from different threads.
 
 ## Usage
 ```
 auto reg = new Snyder::MetricsRegistry();
 reg->Increment("foo");
 reg->Increment("foo", 5);
+reg->Gauge("bla", 10);
 ```
 
 ## Metrics Types
@@ -32,7 +33,6 @@ make install
 Snyder is named after [Betty Snyder][betty_snyder], one of the six original
 programmers of [ENIAC][eniac], who is credited with inventing breakpoints for
 debugging.
-
 
 
 
