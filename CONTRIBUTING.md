@@ -8,4 +8,6 @@
 - Send me a pull request. Bonus points for topic branches.
 
 ## How to run tests
-
+```
+./autogen.sh && ./configure && make test
+```
