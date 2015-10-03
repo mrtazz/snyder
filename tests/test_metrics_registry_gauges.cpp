@@ -38,3 +38,23 @@ TEST_F(MetricsRegistryGaugesTest, TestAddSimpleGauge)
 
   EXPECT_EQ(1, gauges["foo"]);
 }
+TEST_F(MetricsRegistryGaugesTest, TestChangeGauge)
+{
+  auto reg = new Snyder::MetricsRegistry();
+  reg->Gauge("foo", 1);
+  reg->Gauge("foo", 4);
+  auto gauges = reg->GetGauges();
+
+  EXPECT_EQ(4, gauges["foo"]);
+}
+TEST_F(MetricsRegistryGaugesTest, TestClearGauges)
+{
+  auto reg = new Snyder::MetricsRegistry();
+  reg->Gauge("foo", 1);
+  reg->Gauge("foo", 4);
+  auto gauges = reg->GetGauges();
+  EXPECT_EQ(4, gauges["foo"]);
+  reg->ResetGauges();
+  auto gauges2 = reg->GetGauges();
+  EXPECT_EQ(0, gauges2["foo"]);
+}

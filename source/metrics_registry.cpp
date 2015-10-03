@@ -77,3 +77,47 @@ MetricsStore MetricsRegistry::GetGauges() {
   std::lock_guard<std::mutex> lock(gaugesMutex);
   return gaugesRegistry;
 }
+
+/**
+ * @brief reset/clear all metrics
+ *
+ * @return void
+ */
+void MetricsRegistry::Reset() {
+  this->ResetCounters();
+  this->ResetGauges();
+}
+
+/**
+ * @brief get a snapshot of the current state of metrics
+ *
+ * @return MetricsSnapshot
+ */
+MetricsSnapshot MetricsRegistry::Snapshot() {
+  MetricsSnapshot ret;
+
+  ret.counters = this->GetCounters();
+  ret.gauges = this->GetGauges();
+
+  return ret;
+}
+
+/**
+ * @brief reset/clear all counters
+ *
+ * @return void
+ */
+void MetricsRegistry::ResetCounters() {
+  std::lock_guard<std::mutex> lock(counterMutex);
+  counterRegistry.clear();
+}
+
+/**
+ * @brief reset/clear all gauges
+ *
+ * @return void
+ */
+void MetricsRegistry::ResetGauges() {
+  std::lock_guard<std::mutex> lock(gaugesMutex);
+  gaugesRegistry.clear();
+}

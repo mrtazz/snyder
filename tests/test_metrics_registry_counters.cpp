@@ -55,4 +55,14 @@ TEST_F(MetricsRegistryCounterTest, TestIncrementExistingCounter)
 
   EXPECT_EQ(6, counters["foo"]);
 }
+TEST_F(MetricsRegistryCounterTest, TestClearCounters)
+{
+  auto reg = new Snyder::MetricsRegistry();
+  reg->Increment("foo");
+  auto counters = reg->GetCounters();
+  EXPECT_EQ(1, counters["foo"]);
+  reg->ResetCounters();
+  auto counters2 = reg->GetCounters();
+  EXPECT_EQ(0, counters2["foo"]);
+}
 

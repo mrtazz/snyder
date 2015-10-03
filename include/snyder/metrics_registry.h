@@ -15,6 +15,10 @@
 namespace Snyder {
 
   typedef std::map<std::string, uint64_t> MetricsStore;
+  typedef struct MetricsSnapshot {
+      MetricsStore counters;
+      MetricsStore gauges;
+  } MetricsSnapshot;
 
   class MetricsRegistry
   {
@@ -22,17 +26,23 @@ namespace Snyder {
       MetricsRegistry();
       ~MetricsRegistry();
 
+      // generic methods
+      void Reset();
+      MetricsSnapshot Snapshot();
+
       // Metrics tracking and retrieval methods
       // Counters
       size_t Increment(const std::string& name);
       size_t Increment(const std::string& name, uint64_t count);
 
       MetricsStore GetCounters();
+      void ResetCounters();
 
       // Gauges
       size_t Gauge(const std::string& name, uint64_t value);
 
       MetricsStore GetGauges();
+      void ResetGauges();
 
     private:
       MetricsRegistry(const MetricsRegistry&) = delete;
