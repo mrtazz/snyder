@@ -25,7 +25,9 @@ reg->Reset();
 - gauge: simple value tracking
 
 ## Installation
-It's autotools, so:
+For Linux there are packages available on [packagecloud][pkgcloud].
+
+It's autotools, so for everything else there's this:
 ```
 ./autogen.sh
 ./configure
@@ -41,3 +43,4 @@ debugging.
 
 [betty_snyder]: https://en.wikipedia.org/wiki/Betty_Holberton
 [eniac]: https://en.wikipedia.org/wiki/ENIAC
+[pkgcloud]: https://packagecloud.io/mrtazz/snyder
