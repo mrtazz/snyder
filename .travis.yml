@@ -2,11 +2,15 @@ language: cpp
 compiler:
 - gcc
 - clang
-script: ./autogen.sh && ./configure && make test
+script: ./autogen.sh && ./configure --enable-coverage && make test
 install:
 - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 before_script:
   - ./utils/build_gtest.sh
+  - gem install coveralls-lcov
+after_success:
+  - make coverage.info
+  - coveralls-lcov coverage.info
 sudo: false
 addons:
   apt:
