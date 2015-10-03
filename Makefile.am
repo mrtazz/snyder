@@ -9,7 +9,7 @@ test_program_LDFLAGS=-Lvendor/gtest-1.7.0/lib/.libs -lgtest
 
 lib_LTLIBRARIES=libsnyder.la
 libsnyder_la_SOURCES=source/metrics_registry.cpp
-libsnyder_la_CXXFLAGS=-fPIC
+libsnyder_la_CXXFLAGS=$(CXXFLAGS) -fPIC
 libsnyder_la_LDFLAGS=-version-info 1:0:1
 
 .PHONY: test check clean-coverage-files coverage-html

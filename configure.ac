@@ -28,5 +28,5 @@ AX_CXX_COMPILE_STDCXX_11
 
 AC_CONFIG_FILES([Makefile])
 AC_ARG_ENABLE(coverage,
-    AC_HELP_STRING([--enable-coverage],[Enable code coverage]), [CXXFLAGS=" -O0 -g -ftest-coverage -fprofile-arcs"])
+    AC_HELP_STRING([--enable-coverage],[Enable code coverage]), [CXXFLAGS="-std=gnu++11 -O0 -g -ftest-coverage -fprofile-arcs"])
 AC_OUTPUT
