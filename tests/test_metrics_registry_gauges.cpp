@@ -10,6 +10,7 @@
 class MetricsRegistryGaugesTest : public ::testing::Test
 {
  protected:
+    Snyder::MetricsRegistry* reg;
 
     MetricsRegistryGaugesTest()
     {
@@ -21,10 +22,12 @@ class MetricsRegistryGaugesTest : public ::testing::Test
 
     virtual void SetUp()
     {
+      reg = new Snyder::MetricsRegistry();
     }
 
     virtual void TearDown()
     {
+      delete reg;
     }
 
 };
@@ -32,7 +35,6 @@ class MetricsRegistryGaugesTest : public ::testing::Test
 // Tests that a simple mustache tag is replaced
 TEST_F(MetricsRegistryGaugesTest, TestAddSimpleGauge)
 {
-  auto reg = new Snyder::MetricsRegistry();
   reg->Gauge("foo", 1);
   auto gauges = reg->GetGauges();
 
@@ -40,7 +42,6 @@ TEST_F(MetricsRegistryGaugesTest, TestAddSimpleGauge)
 }
 TEST_F(MetricsRegistryGaugesTest, TestChangeGauge)
 {
-  auto reg = new Snyder::MetricsRegistry();
   reg->Gauge("foo", 1);
   reg->Gauge("foo", 4);
   auto gauges = reg->GetGauges();
@@ -49,7 +50,6 @@ TEST_F(MetricsRegistryGaugesTest, TestChangeGauge)
 }
 TEST_F(MetricsRegistryGaugesTest, TestClearGauges)
 {
-  auto reg = new Snyder::MetricsRegistry();
   reg->Gauge("foo", 1);
   reg->Gauge("foo", 4);
   auto gauges = reg->GetGauges();

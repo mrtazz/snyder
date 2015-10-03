@@ -10,6 +10,7 @@
 class MetricsRegistryTest : public ::testing::Test
 {
  protected:
+    Snyder::MetricsRegistry* reg;
 
     MetricsRegistryTest()
     {
@@ -21,10 +22,12 @@ class MetricsRegistryTest : public ::testing::Test
 
     virtual void SetUp()
     {
+      reg = new Snyder::MetricsRegistry();
     }
 
     virtual void TearDown()
     {
+      delete reg;
     }
 
 };
@@ -32,7 +35,6 @@ class MetricsRegistryTest : public ::testing::Test
 // Tests that a simple mustache tag is replaced
 TEST_F(MetricsRegistryTest, TestSnapshot)
 {
-  auto reg = new Snyder::MetricsRegistry();
   reg->Increment("foo");
   reg->Gauge("foo", 2);
   auto snapshot = reg->Snapshot();
@@ -41,7 +43,6 @@ TEST_F(MetricsRegistryTest, TestSnapshot)
 }
 TEST_F(MetricsRegistryTest, TestResetMetrics)
 {
-  auto reg = new Snyder::MetricsRegistry();
   reg->Increment("foo");
   reg->Gauge("foo", 2);
   auto snapshot = reg->Snapshot();

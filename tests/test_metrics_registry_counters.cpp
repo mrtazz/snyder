@@ -10,6 +10,7 @@
 class MetricsRegistryCounterTest : public ::testing::Test
 {
  protected:
+    Snyder::MetricsRegistry* reg;
 
     MetricsRegistryCounterTest()
     {
@@ -21,10 +22,12 @@ class MetricsRegistryCounterTest : public ::testing::Test
 
     virtual void SetUp()
     {
+      reg = new Snyder::MetricsRegistry();
     }
 
     virtual void TearDown()
     {
+      delete reg;
     }
 
 };
@@ -32,7 +35,6 @@ class MetricsRegistryCounterTest : public ::testing::Test
 // Tests that a simple mustache tag is replaced
 TEST_F(MetricsRegistryCounterTest, TestAddSimpleCounter)
 {
-  auto reg = new Snyder::MetricsRegistry();
   reg->Increment("foo");
   auto counters = reg->GetCounters();
 
@@ -40,7 +42,6 @@ TEST_F(MetricsRegistryCounterTest, TestAddSimpleCounter)
 }
 TEST_F(MetricsRegistryCounterTest, TestAddCounterWithSpecifiedValue)
 {
-  auto reg = new Snyder::MetricsRegistry();
   reg->Increment("foo", 5);
   auto counters = reg->GetCounters();
 
@@ -48,7 +49,6 @@ TEST_F(MetricsRegistryCounterTest, TestAddCounterWithSpecifiedValue)
 }
 TEST_F(MetricsRegistryCounterTest, TestIncrementExistingCounter)
 {
-  auto reg = new Snyder::MetricsRegistry();
   reg->Increment("foo");
   reg->Increment("foo", 5);
   auto counters = reg->GetCounters();
@@ -57,7 +57,6 @@ TEST_F(MetricsRegistryCounterTest, TestIncrementExistingCounter)
 }
 TEST_F(MetricsRegistryCounterTest, TestClearCounters)
 {
-  auto reg = new Snyder::MetricsRegistry();
   reg->Increment("foo");
   auto counters = reg->GetCounters();
   EXPECT_EQ(1, counters["foo"]);
