@@ -9,11 +9,15 @@ Snyder is a metrics library for C++11. It supports tracking of a number of
 metric types from different threads.
 
 ## Usage
-```
+```cpp
 auto reg = new Snyder::MetricsRegistry();
 reg->Increment("foo");
 reg->Increment("foo", 5);
 reg->Gauge("bla", 10);
+
+// get a snapshot and clear out metrics
+auto snapshot = reg->Snapshot();
+reg->Reset();
 ```
 
 ## Metrics Types
