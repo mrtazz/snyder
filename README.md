@@ -22,6 +22,9 @@ auto snapshot = reg->Snapshot();
 reg->Reset();
 ```
 
+You can also checkout the reference docs
+[here](http://code.mrtazz.com/snyder/ref/annotated.html).
+
 ## Metrics Types
 - counters: a monotonic increasing count
 - gauge: simple value tracking
