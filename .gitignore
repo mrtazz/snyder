@@ -32,3 +32,4 @@ coverage.info
 usr
 *.rpm
 *.deb
+docs

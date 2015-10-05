@@ -12,7 +12,7 @@ libsnyder_la_SOURCES=source/metrics_registry.cpp
 libsnyder_la_CXXFLAGS=$(CXXFLAGS) -fPIC
 libsnyder_la_LDFLAGS=-version-info 1:0:1
 
-.PHONY: test check coverage-html
+.PHONY: test check coverage-html docs clean-docs deploy-docs doxygen jekyll
 
 test: check
 	./test-program
@@ -44,3 +44,30 @@ deb:
 	  fpm -t deb -s dir $(FPM_FLAGS)
 
 packages: local-install rpm deb
+
+GAUGES_CODE="5610468e92c6ac057e0034b0"
+
+doxygen:
+	doxygen doxygen.config
+
+jekyll:
+	echo "gaugesid: $(GAUGES_CODE)" > docs/_config.yml
+	echo "projecturl: $(PROJECT_URL)" >> docs/_config.yml
+	echo "basesite: http://www.unwiredcouch.com" >> docs/_config.yml
+	echo "markdown: redcarpet" >> docs/_config.yml
+	echo "---\nlayout: project\ntitle: restclient-cpp\n---" > docs/index.md
+	cat README.md >> docs/index.md
+
+docs: doxygen jekyll
+
+clean-docs:
+	rm -rf ./docs
+
+deploy-docs: docs
+	cd docs && git init && git remote add upstream "https://${GH_TOKEN}@github.com/mrtazz/snyder.git" && \
+	git submodule add https://github.com/mrtazz/jekyll-layouts.git ./_layouts && \
+	git submodule update --init && \
+	git fetch upstream && git reset upstream/gh-pages && touch . && git add -A . && \
+	git commit -m "rebuild pages at $(VERSION)" --author="Daniel Schauenberg <d@unwiredcouch.com>" && \
+	git push -q upstream HEAD:gh-pages
+
