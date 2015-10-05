@@ -67,7 +67,9 @@ deploy-docs: docs
 	cd docs && git init && git remote add upstream "https://${GH_TOKEN}@github.com/mrtazz/snyder.git" && \
 	git submodule add https://github.com/mrtazz/jekyll-layouts.git ./_layouts && \
 	git submodule update --init && \
-	git fetch upstream && git reset upstream/gh-pages && touch . && git add -A . && \
-	git commit -m "rebuild pages at $(VERSION)" --author="Daniel Schauenberg <d@unwiredcouch.com>" && \
+	git fetch upstream && git reset upstream/gh-pages && \
+	git config user.name 'Daniel Schauenberg' && git config user.email d@unwiredcouch.com && \
+	touch . && git add -A . && \
+	git commit -m "rebuild pages at $(VERSION)" && \
 	git push -q upstream HEAD:gh-pages
 
