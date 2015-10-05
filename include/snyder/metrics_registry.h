@@ -14,12 +14,28 @@
 
 namespace Snyder {
 
+  /**
+   * @brief type definition for generic metrics store
+   */
   typedef std::map<std::string, uint64_t> MetricsStore;
+  /**
+   * @brief type definition for the data type returned by Snapshot()
+   */
   typedef struct MetricsSnapshot {
-      MetricsStore counters;
-      MetricsStore gauges;
+    /**
+     * @brief stores a copy of the counters MetricsStore
+     */
+    MetricsStore counters;
+    /**
+     * @brief stores a copy of the gauges MetricsStore
+     */
+    MetricsStore gauges;
   } MetricsSnapshot;
 
+  /**
+   * @brief central metrics registry. You can have multiple of those and each
+   * instance will have their own set of metrics.
+   */
   class MetricsRegistry
   {
     public:

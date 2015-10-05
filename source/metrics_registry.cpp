@@ -43,7 +43,7 @@ size_t MetricsRegistry::Increment(const std::string& name, uint64_t count) {
  * @brief method to record a gauge value
  *
  * @param name the name of the gauge to record
- * @param name the value of the gauge to record
+ * @param value the value of the gauge to record
  *
  * @return size_t 0
  */
