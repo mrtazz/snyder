@@ -55,7 +55,10 @@ jekyll:
 	echo "projecturl: $(PROJECT_URL)" >> docs/_config.yml
 	echo "basesite: http://www.unwiredcouch.com" >> docs/_config.yml
 	echo "markdown: redcarpet" >> docs/_config.yml
-	echo "---\nlayout: project\ntitle: restclient-cpp\n---" > docs/index.md
+	echo "---" > docs/index.md
+	echo "layout: project" >> docs/index.md
+	echo "title: snyder" >> docs/index.md
+	echo "---" >> docs/index.md
 	cat README.md >> docs/index.md
 
 docs: doxygen jekyll
