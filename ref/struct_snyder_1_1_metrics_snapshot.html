@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,16 +103,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="Snyder::MetricsSnapshot" -->
+<p>type definition for the data type returned by Snapshot()  
+ <a href="struct_snyder_1_1_metrics_snapshot.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="metrics__registry_8h_source.html">metrics_registry.h</a>&gt;</code></p>
+
 <p><a href="struct_snyder_1_1_metrics_snapshot-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af564b2dec266b59fd610a801328c346b"></a><!-- doxytag: member="Snyder::MetricsSnapshot::counters" ref="af564b2dec266b59fd610a801328c346b" args="" -->
-MetricsStore&#160;</td><td class="memItemRight" valign="bottom"><b>counters</b></td></tr>
+MetricsStore&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_snyder_1_1_metrics_snapshot.html#af564b2dec266b59fd610a801328c346b">counters</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">stores a copy of the counters MetricsStore <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab4bf3e8a4110b2556031fb5ab908ccb6"></a><!-- doxytag: member="Snyder::MetricsSnapshot::gauges" ref="ab4bf3e8a4110b2556031fb5ab908ccb6" args="" -->
-MetricsStore&#160;</td><td class="memItemRight" valign="bottom"><b>gauges</b></td></tr>
+MetricsStore&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_snyder_1_1_metrics_snapshot.html#ab4bf3e8a4110b2556031fb5ab908ccb6">gauges</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">stores a copy of the gauges MetricsStore <br/></td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>type definition for the data type returned by Snapshot() </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/snyder/<a class="el" href="metrics__registry_8h_source.html">metrics_registry.h</a></li>
 </ul>
 </div><!-- contents -->
@@ -121,7 +130,7 @@ MetricsStore&#160;</td><td class="memItemRight" valign="bottom"><b>gauges</b></t
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -133,7 +142,7 @@ MetricsStore&#160;</td><td class="memItemRight" valign="bottom"><b>gauges</b></t
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 5 2015 15:05:30 for snyder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 5 2015 15:31:30 for snyder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

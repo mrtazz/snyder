@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,6 +103,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="Snyder::MetricsRegistry" -->
+<p>central metrics registry. You can have multiple of those and each instance will have their own set of metrics.  
+ <a href="class_snyder_1_1_metrics_registry.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="metrics__registry_8h_source.html">metrics_registry.h</a>&gt;</code></p>
+
 <p><a href="class_snyder_1_1_metrics_registry-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -126,7 +131,9 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#af3301fae086bcd525543af470df66647">ResetGauges</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">reset/clear all gauges  <a href="#af3301fae086bcd525543af470df66647"></a><br/></td></tr>
 </table>
-<hr/><h2>Member Function Documentation</h2>
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>central metrics registry. You can have multiple of those and each instance will have their own set of metrics. </p>
+</div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="ab646ceb8edd0e965e0d1276c3ccd177d"></a><!-- doxytag: member="Snyder::MetricsRegistry::Gauge" ref="ab646ceb8edd0e965e0d1276c3ccd177d" args="(const std::string &amp;name, uint64_t value)" -->
 <div class="memitem">
 <div class="memproto">
@@ -156,7 +163,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>the name of the gauge to record </td></tr>
-    <tr><td class="paramname">name</td><td>the value of the gauge to record</td></tr>
+    <tr><td class="paramname">value</td><td>the value of the gauge to record</td></tr>
   </table>
   </dd>
 </dl>
@@ -337,7 +344,7 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>get a snapshot of the current state of metrics </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="struct_snyder_1_1_metrics_snapshot.html">MetricsSnapshot</a> </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="struct_snyder_1_1_metrics_snapshot.html" title="type definition for the data type returned by Snapshot()">MetricsSnapshot</a> </dd></dl>
 
 </div>
 </div>
@@ -351,7 +358,7 @@ Public Member Functions</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -363,7 +370,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 5 2015 15:05:30 for snyder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 5 2015 15:31:30 for snyder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
