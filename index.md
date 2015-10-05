@@ -1,4 +1,7 @@
----\nlayout: project\ntitle: restclient-cpp\n---
+---
+layout: project
+title: restclient-cpp
+---
 # snyder
 
 [![Build Status](https://travis-ci.org/mrtazz/snyder.svg?branch=master)](https://travis-ci.org/mrtazz/snyder)
