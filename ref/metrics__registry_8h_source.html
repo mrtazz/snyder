@@ -86,50 +86,54 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="preprocessor">#include &lt;map&gt;</span>
 <a name="l00013"></a>00013 <span class="preprocessor">#include &lt;mutex&gt;</span>
 <a name="l00014"></a>00014 
-<a name="l00015"></a>00015 <span class="keyword">namespace </span>Snyder {
+<a name="l00015"></a>00015 <span class="preprocessor">#include &quot;snyder/version.h&quot;</span>
 <a name="l00016"></a>00016 
-<a name="l00020"></a>00020   <span class="keyword">typedef</span> std::map&lt;std::string, uint64_t&gt; MetricsStore;
-<a name="l00024"></a><a class="code" href="struct_snyder_1_1_metrics_snapshot.html">00024</a>   <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_snyder_1_1_metrics_snapshot.html" title="type definition for the data type returned by Snapshot()">MetricsSnapshot</a> {
-<a name="l00028"></a><a class="code" href="struct_snyder_1_1_metrics_snapshot.html#af564b2dec266b59fd610a801328c346b">00028</a>     MetricsStore <a class="code" href="struct_snyder_1_1_metrics_snapshot.html#af564b2dec266b59fd610a801328c346b" title="stores a copy of the counters MetricsStore">counters</a>;
-<a name="l00032"></a><a class="code" href="struct_snyder_1_1_metrics_snapshot.html#ab4bf3e8a4110b2556031fb5ab908ccb6">00032</a>     MetricsStore <a class="code" href="struct_snyder_1_1_metrics_snapshot.html#ab4bf3e8a4110b2556031fb5ab908ccb6" title="stores a copy of the gauges MetricsStore">gauges</a>;
-<a name="l00033"></a>00033   } <a class="code" href="struct_snyder_1_1_metrics_snapshot.html" title="type definition for the data type returned by Snapshot()">MetricsSnapshot</a>;
-<a name="l00034"></a>00034 
-<a name="l00039"></a><a class="code" href="class_snyder_1_1_metrics_registry.html">00039</a>   <span class="keyword">class </span><a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>
-<a name="l00040"></a>00040   {
-<a name="l00041"></a>00041     <span class="keyword">public</span>:
-<a name="l00042"></a>00042       <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>();
-<a name="l00043"></a>00043       ~<a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>();
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045       <span class="comment">// generic methods</span>
-<a name="l00046"></a>00046       <span class="keywordtype">void</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#aebd9e3a749ccb47803de9e8664dad2c5" title="reset/clear all metrics">Reset</a>();
-<a name="l00047"></a>00047       <a class="code" href="struct_snyder_1_1_metrics_snapshot.html" title="type definition for the data type returned by Snapshot()">MetricsSnapshot</a> <a class="code" href="class_snyder_1_1_metrics_registry.html#a4dc57944609954d4b0593bfc0f285705" title="get a snapshot of the current state of metrics">Snapshot</a>();
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049       <span class="comment">// Metrics tracking and retrieval methods</span>
-<a name="l00050"></a>00050       <span class="comment">// Counters</span>
-<a name="l00051"></a>00051       <span class="keywordtype">size_t</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#a3a5a4dbb3cf5131c4c9a1a672a3ca843" title="method to increment a metric by 1">Increment</a>(<span class="keyword">const</span> std::string&amp; name);
-<a name="l00052"></a>00052       <span class="keywordtype">size_t</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#a3a5a4dbb3cf5131c4c9a1a672a3ca843" title="method to increment a metric by 1">Increment</a>(<span class="keyword">const</span> std::string&amp; name, uint64_t count);
+<a name="l00017"></a>00017 <span class="keyword">namespace </span>Snyder {
+<a name="l00018"></a>00018 
+<a name="l00024"></a>00024   <span class="keyword">static</span> <span class="keyword">const</span> std::string VERSION = SNYDER_VERSION;
+<a name="l00025"></a>00025 
+<a name="l00029"></a>00029   <span class="keyword">typedef</span> std::map&lt;std::string, uint64_t&gt; MetricsStore;
+<a name="l00033"></a><a class="code" href="struct_snyder_1_1_metrics_snapshot.html">00033</a>   <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_snyder_1_1_metrics_snapshot.html" title="type definition for the data type returned by Snapshot()">MetricsSnapshot</a> {
+<a name="l00037"></a><a class="code" href="struct_snyder_1_1_metrics_snapshot.html#af564b2dec266b59fd610a801328c346b">00037</a>     MetricsStore <a class="code" href="struct_snyder_1_1_metrics_snapshot.html#af564b2dec266b59fd610a801328c346b" title="stores a copy of the counters MetricsStore">counters</a>;
+<a name="l00041"></a><a class="code" href="struct_snyder_1_1_metrics_snapshot.html#ab4bf3e8a4110b2556031fb5ab908ccb6">00041</a>     MetricsStore <a class="code" href="struct_snyder_1_1_metrics_snapshot.html#ab4bf3e8a4110b2556031fb5ab908ccb6" title="stores a copy of the gauges MetricsStore">gauges</a>;
+<a name="l00042"></a>00042   } <a class="code" href="struct_snyder_1_1_metrics_snapshot.html" title="type definition for the data type returned by Snapshot()">MetricsSnapshot</a>;
+<a name="l00043"></a>00043 
+<a name="l00048"></a><a class="code" href="class_snyder_1_1_metrics_registry.html">00048</a>   <span class="keyword">class </span><a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>
+<a name="l00049"></a>00049   {
+<a name="l00050"></a>00050     <span class="keyword">public</span>:
+<a name="l00051"></a>00051       <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>();
+<a name="l00052"></a>00052       ~<a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>();
 <a name="l00053"></a>00053 
-<a name="l00054"></a>00054       MetricsStore <a class="code" href="class_snyder_1_1_metrics_registry.html#a2ea085b0b4f10fb0d9f633920840ef40" title="method to get the MetricsStore backing counters. This will return by value thus locking the mutex for...">GetCounters</a>();
-<a name="l00055"></a>00055       <span class="keywordtype">void</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#afcbff5de2c8d173d841e2b419986dc1f" title="reset/clear all counters">ResetCounters</a>();
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057       <span class="comment">// Gauges</span>
-<a name="l00058"></a>00058       <span class="keywordtype">size_t</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#ab646ceb8edd0e965e0d1276c3ccd177d" title="method to record a gauge value">Gauge</a>(<span class="keyword">const</span> std::string&amp; name, uint64_t value);
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060       MetricsStore <a class="code" href="class_snyder_1_1_metrics_registry.html#a89edcafe865dffe83b4f2c75ea548bd4" title="method to get the MetricsStore backing gauges. This will return by value thus locking the mutex for t...">GetGauges</a>();
-<a name="l00061"></a>00061       <span class="keywordtype">void</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#af3301fae086bcd525543af470df66647" title="reset/clear all gauges">ResetGauges</a>();
+<a name="l00054"></a>00054       <span class="comment">// generic methods</span>
+<a name="l00055"></a>00055       <span class="keywordtype">void</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#aebd9e3a749ccb47803de9e8664dad2c5" title="reset/clear all metrics">Reset</a>();
+<a name="l00056"></a>00056       <a class="code" href="struct_snyder_1_1_metrics_snapshot.html" title="type definition for the data type returned by Snapshot()">MetricsSnapshot</a> <a class="code" href="class_snyder_1_1_metrics_registry.html#a4dc57944609954d4b0593bfc0f285705" title="get a snapshot of the current state of metrics">Snapshot</a>();
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058       <span class="comment">// Metrics tracking and retrieval methods</span>
+<a name="l00059"></a>00059       <span class="comment">// Counters</span>
+<a name="l00060"></a>00060       <span class="keywordtype">size_t</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#a3a5a4dbb3cf5131c4c9a1a672a3ca843" title="method to increment a metric by 1">Increment</a>(<span class="keyword">const</span> std::string&amp; name);
+<a name="l00061"></a>00061       <span class="keywordtype">size_t</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#a3a5a4dbb3cf5131c4c9a1a672a3ca843" title="method to increment a metric by 1">Increment</a>(<span class="keyword">const</span> std::string&amp; name, uint64_t count);
 <a name="l00062"></a>00062 
-<a name="l00063"></a>00063     <span class="keyword">private</span>:
-<a name="l00064"></a>00064       <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>(<span class="keyword">const</span> <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00065"></a>00065       <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>(<a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>&amp;&amp;) = <span class="keyword">delete</span>;
-<a name="l00066"></a>00066       MetricsStore counterRegistry;
-<a name="l00067"></a>00067       MetricsStore gaugesRegistry;
-<a name="l00068"></a>00068       std::mutex counterMutex;
-<a name="l00069"></a>00069       std::mutex gaugesMutex;
-<a name="l00070"></a>00070   };
+<a name="l00063"></a>00063       MetricsStore <a class="code" href="class_snyder_1_1_metrics_registry.html#a2ea085b0b4f10fb0d9f633920840ef40" title="method to get the MetricsStore backing counters. This will return by value thus locking the mutex for...">GetCounters</a>();
+<a name="l00064"></a>00064       <span class="keywordtype">void</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#afcbff5de2c8d173d841e2b419986dc1f" title="reset/clear all counters">ResetCounters</a>();
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066       <span class="comment">// Gauges</span>
+<a name="l00067"></a>00067       <span class="keywordtype">size_t</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#ab646ceb8edd0e965e0d1276c3ccd177d" title="method to record a gauge value">Gauge</a>(<span class="keyword">const</span> std::string&amp; name, uint64_t value);
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069       MetricsStore <a class="code" href="class_snyder_1_1_metrics_registry.html#a89edcafe865dffe83b4f2c75ea548bd4" title="method to get the MetricsStore backing gauges. This will return by value thus locking the mutex for t...">GetGauges</a>();
+<a name="l00070"></a>00070       <span class="keywordtype">void</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#af3301fae086bcd525543af470df66647" title="reset/clear all gauges">ResetGauges</a>();
 <a name="l00071"></a>00071 
-<a name="l00072"></a>00072 }
-<a name="l00073"></a>00073 
-<a name="l00074"></a>00074 <span class="preprocessor">#endif  // INCLUDE_SNYDER_H_</span>
+<a name="l00072"></a>00072     <span class="keyword">private</span>:
+<a name="l00073"></a>00073       <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>(<span class="keyword">const</span> <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00074"></a>00074       <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>(<a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>&amp;&amp;) = <span class="keyword">delete</span>;
+<a name="l00075"></a>00075       MetricsStore counterRegistry;
+<a name="l00076"></a>00076       MetricsStore gaugesRegistry;
+<a name="l00077"></a>00077       std::mutex counterMutex;
+<a name="l00078"></a>00078       std::mutex gaugesMutex;
+<a name="l00079"></a>00079   };
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 }
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 <span class="preprocessor">#endif  // INCLUDE_SNYDER_H_</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -148,7 +152,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 5 2015 15:31:47 for snyder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Oct 6 2015 16:47:49 for snyder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
