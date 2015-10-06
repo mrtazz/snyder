@@ -2,6 +2,7 @@ ACLOCAL_AMFLAGS=-I m4
 CPPFLAGS=-Iinclude -Ivendor/gtest-1.7.0/include -Ivendor/jsoncpp-0.10.5/dist
 check_PROGRAMS = test-program
 pkginclude_HEADERS = include/snyder/metrics_registry.h
+BUILT_SOURCES = include/snyder/version.h
 
 test_program_SOURCES = tests/test_metrics_registry_counters.cpp tests/test_metrics_registry_gauges.cpp tests/test_metrics_registry.cpp tests/tests.cpp
 test_program_LDADD = .libs/libsnyder.a
@@ -12,7 +13,7 @@ libsnyder_la_SOURCES=source/metrics_registry.cpp
 libsnyder_la_CXXFLAGS=$(CXXFLAGS) -fPIC
 libsnyder_la_LDFLAGS=-version-info 1:0:1
 
-.PHONY: test check coverage-html docs clean-docs deploy-docs doxygen jekyll
+.PHONY: test check coverage-html docs clean-docs deploy-docs doxygen jekyll include/snyder/version.h
 
 test: check
 	./test-program
@@ -44,6 +45,10 @@ deb:
 	  fpm -t deb -s dir $(FPM_FLAGS)
 
 packages: local-install rpm deb
+
+include/snyder/version.h:
+	m4 -I m4 --define=M4_SNYDER_VERSION=$(VERSION) version.h.m4 > $@
+
 
 GAUGES_CODE="5610468e92c6ac057e0034b0"
 

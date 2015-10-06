@@ -30,6 +30,11 @@ m4
 html
 coverage.info
 usr
+
+# packaging
 *.rpm
 *.deb
+
+# generated files
 docs
+include/snyder/version.h

@@ -12,7 +12,16 @@
 #include <map>
 #include <mutex>
 
+#include "snyder/version.h"
+
 namespace Snyder {
+
+  /**
+   * @brief namespace level variable to get the version of snyder the code was
+   * built with. The version comes from the generated version.h and is built
+   * in Makefile.am from `git describe --tags --always --dirty`
+   */
+  static const std::string VERSION = SNYDER_VERSION;
 
   /**
    * @brief type definition for generic metrics store
