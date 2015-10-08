@@ -23,6 +23,7 @@ addons:
     - g++-4.8
     - clang
     - doxygen
+    - lcov
 env:
   global:
     secure: TnPeBWy3uDcXK4cPAxw8DXQxk1/DANU9cxMgqNGQBXEswLqyKw4iVanN0nTbGNj8F8YUblesLb5liUeTbNNS3F4xP087//7JuGOWiXJpUvsP6irnvUab6R+GiTK9/K8VLZQFM0s+Wr8fD3UZ6UbbLmK7Q99eMDSEif3ANZP0gEvPqqX7XAa6WOIKryVMIqGHUrQLDG3478dFuCd/iH6Nc81uVSA8ej0V6MJduP5/dQn7zuJ6IKt4DfpQso1cMgTLdirma/KwaEh0E7V3ZQWywzDza4Vf/yNc9Mc+GNq15sCDfsaR3APs3oktbuUo8aeeYYnVv4ZJUjN5vkLuUg8gPhwD/IeZuCbTx7YdIE/pGezvcggnQSwhTGMMYv41ceX3LS5LOUc7Jy/pW28/MHGTyvnJAkq9AmbHbmIEsS/k+r0Ou5uxk5OzdzpBt3dY44BbMg+UwmOu7rR5Rw4F9sy9B+SYGYWPINN6cF/Pdqc0Md8VhyABGl7cWWoKkeMx+uGoSflb7QYASmRPgyzTY6xLokGS/Tiuq4FKS23zGVR6citrPFJOohmgVXwkA6FeoK9mxIweqsQ176xwuOX/kntz/7tJ0uFv0P+bPcnm8NJqfY3NNezO0tcbyDEe+WDDNip//x/A5JivXWfR6+OSiq+hAYFDJEKhRIa1Shq0SHozpXY=
