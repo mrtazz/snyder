@@ -72,7 +72,7 @@ clean-docs:
 	rm -rf ./docs
 
 deploy-docs: docs
-	cd docs && git init && git remote add upstream "https://${GH_TOKEN}@github.com/mrtazz/snyder.git" && \
+	@cd docs && git init && git remote add upstream "https://${GH_TOKEN}@github.com/mrtazz/snyder.git" && \
 	git submodule add https://github.com/mrtazz/jekyll-layouts.git ./_layouts && \
 	git submodule update --init && \
 	git fetch upstream && git reset upstream/gh-pages && \
