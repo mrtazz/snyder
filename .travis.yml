@@ -10,7 +10,7 @@ before_script:
 - gem install coveralls-lcov
 after_success:
 - curl http://ftp.de.debian.org/debian/pool/main/l/lcov/lcov_1.11.orig.tar.gz | tar xz
-- export PATH=$PATH:lcov-1.11/bin
+- export PATH=$PATH:`pwd`/lcov-1.11/bin
 - make coverage.info
 - coveralls-lcov coverage.info
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && make
@@ -26,7 +26,6 @@ addons:
     - g++-4.8
     - clang
     - doxygen
-    - lcov
 env:
   global:
   - secure: iPRn0MYE/6YNGBCP/mVxOBa0PFMV1snwwJpe55Vf4dFMtR2NQ0zFNDzBFx3vTyzaW8sTb6D0IGFsrBwJK/6WFC0a87nKK6jfg/OeOdxV5cMBLOyFUY/AuK3SHaJcJc0BxjCAvU1cYsIYLu5NrvQxllJ+bKBXWQd4caXQ+PkWGd37DGp5wiJc0kbE4LrUVDKV0OBnls9+zcA2vO96f1AAvt+5vjds0CjzflqoSon8sX2Ki9bjpAapquDqTAqZx3Hyiv7BmJF7iCbX6KnhR9NGk0ufeZVBVgX7U5LBZrcCEdtGCYhj1sH29N3XTMv1pKKFftDqWgFpko7WP9Ow0Eb1lJDsF+69dGExS664gt6qPU9+sfKUrd+wx4D3dpd90hPMU9lWEFLe+9i5aLzP/lWVTx5j2yk9kwZFwFm7aEVT/QBZLGboTvBp6jf2sNpheZXqivutWz6uoG9MwBj2X12IqnvbKqYema8wnatCOIVoYoAacV6IldTmVCaXsCOSVDc6Nf7EunyP2IREfcX/qn4fBR0at9rjTrrcqf8xXCALs0B8Qb8/e9Exl0vMj5gnJ00z7m2MdEkwdZhWjSy3/d9nvn33caPDjy89LTqa7gyu1KbUeSJTbGYy68qzzdwYuymGbEvv8+AVF6Y11lZXTIgKYQRlWtZz8WdVfEWwlU78rIc=
