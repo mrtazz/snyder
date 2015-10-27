@@ -1,7 +1,7 @@
 ACLOCAL_AMFLAGS=-I m4
 CPPFLAGS=-Iinclude -Ivendor/gtest-1.7.0/include -Ivendor/jsoncpp-0.10.5/dist
 check_PROGRAMS = test-program
-pkginclude_HEADERS = include/snyder/metrics_registry.h
+pkginclude_HEADERS = include/snyder/metrics_registry.h include/snyder/version.h
 BUILT_SOURCES = include/snyder/version.h
 
 test_program_SOURCES = tests/test_metrics_registry_counters.cpp tests/test_metrics_registry_gauges.cpp tests/test_metrics_registry.cpp tests/tests.cpp
