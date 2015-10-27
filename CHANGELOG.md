@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.3.1 (10/27/2015)
+* fix header inclusion in packaging
+* add automated doc deploy
+* un-vendor lcov
+
 ## v0.3.0 (10/06/2015)
 * add version information to the build - Daniel Schauenberg <d@unwiredcouch.com>
 * add some more documentation - Daniel Schauenberg <d@unwiredcouch.com>
