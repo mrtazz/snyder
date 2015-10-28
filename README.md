@@ -15,6 +15,7 @@ metric types from different threads.
 auto reg = new Snyder::MetricsRegistry();
 reg->Increment("foo");
 reg->Increment("foo", 5);
+reg->Decrement("foo", 2);
 reg->Gauge("bla", 10);
 
 // get a snapshot and clear out metrics
