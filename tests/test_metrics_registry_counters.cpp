@@ -64,4 +64,29 @@ TEST_F(MetricsRegistryCounterTest, TestClearCounters)
   auto counters2 = reg->GetCounters();
   EXPECT_EQ(0, counters2["foo"]);
 }
+TEST_F(MetricsRegistryCounterTest, TestDecrementCounters)
+{
+  reg->Increment("foo", 5);
+  reg->Decrement("foo");
+  auto counters = reg->GetCounters();
+  EXPECT_EQ(4, counters["foo"]);
+  reg->Decrement("foo", 2);
+  auto counters2 = reg->GetCounters();
+  EXPECT_EQ(2, counters2["foo"]);
+}
+TEST_F(MetricsRegistryCounterTest, TestDecrementCountersBeyondZero)
+{
+  reg->Increment("foo", 5);
+  int res = reg->Decrement("foo", 6);
+  auto counters = reg->GetCounters();
+  EXPECT_EQ(0, res);
+  EXPECT_EQ(0, counters["foo"]);
+}
+TEST_F(MetricsRegistryCounterTest, TestCountAddOutOfRange)
+{
+  reg->Increment("foo", 5);
+  reg->Increment("foo", UINT64_MAX);
+  auto counters = reg->GetCounters();
+  EXPECT_EQ(UINT64_MAX, counters["foo"]);
+}
 

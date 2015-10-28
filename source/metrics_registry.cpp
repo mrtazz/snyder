@@ -18,11 +18,10 @@ MetricsRegistry::~MetricsRegistry() {
  *
  * @param name the name of the counter to increment
  *
- * @return size_t 0
+ * @return int 0 on success
  */
-size_t MetricsRegistry::Increment(const std::string& name) {
-  this->Increment(name, 1);
-  return 0;
+int MetricsRegistry::Increment(const std::string& name) {
+  return this->Increment(name, 1);
 }
 
 /**
@@ -31,11 +30,49 @@ size_t MetricsRegistry::Increment(const std::string& name) {
  * @param name the name of the counter to increment
  * @param count integer to increment the counter by
  *
- * @return size_t 0
+ * @return int 0 on success
  */
-size_t MetricsRegistry::Increment(const std::string& name, uint64_t count) {
+int MetricsRegistry::Increment(const std::string& name, uint64_t count) {
+    std::lock_guard<std::mutex> lock(counterMutex);
+    uint64_t value = counterRegistry[name];
+    // detect overflow in addition and set value to MAX
+    if (count > 0 && value > (UINT64_MAX - count)) {
+      counterRegistry[name] = UINT64_MAX;
+    } else {
+      counterRegistry[name] += count;
+    }
+    return 0;
+}
+
+/**
+ * @brief method to decrement a metric by 1. If the result would be negative,
+ * the counter is set to 0.
+ *
+ * @param name the name of the counter to decrement
+ *
+ * @return int 0 on success, 1 if count is out of range
+ */
+int MetricsRegistry::Decrement(const std::string& name) {
+  return this->Decrement(name, 1);
+}
+
+/**
+ * @brief method to decrement a metric by a given count. If the result would
+ * be negative, the counter is set to 0.
+ *
+ * @param name the name of the counter to increment
+ * @param count integer to decrement the counter by
+ *
+ * @return int 0 on success
+ */
+int MetricsRegistry::Decrement(const std::string& name, uint64_t count) {
   std::lock_guard<std::mutex> lock(counterMutex);
-  counterRegistry[name] += count;
+  uint64_t value = counterRegistry[name];
+  if (value < count) {
+    counterRegistry[name] = 0;
+  } else {
+    counterRegistry[name] = (value - count);
+  }
   return 0;
 }
 
@@ -45,9 +82,9 @@ size_t MetricsRegistry::Increment(const std::string& name, uint64_t count) {
  * @param name the name of the gauge to record
  * @param value the value of the gauge to record
  *
- * @return size_t 0
+ * @return int 0 on success, 1 if value is out of range
  */
-size_t MetricsRegistry::Gauge(const std::string& name, uint64_t value) {
+int MetricsRegistry::Gauge(const std::string& name, uint64_t value) {
   std::lock_guard<std::mutex> lock(gaugesMutex);
   gaugesRegistry[name] = value;
   return 0;

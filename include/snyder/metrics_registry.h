@@ -57,14 +57,16 @@ namespace Snyder {
 
       // Metrics tracking and retrieval methods
       // Counters
-      size_t Increment(const std::string& name);
-      size_t Increment(const std::string& name, uint64_t count);
+      int Increment(const std::string& name);
+      int Increment(const std::string& name, uint64_t count);
+      int Decrement(const std::string& name);
+      int Decrement(const std::string& name, uint64_t count);
 
       MetricsStore GetCounters();
       void ResetCounters();
 
       // Gauges
-      size_t Gauge(const std::string& name, uint64_t value);
+      int Gauge(const std::string& name, uint64_t value);
 
       MetricsStore GetGauges();
       void ResetGauges();
