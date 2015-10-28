@@ -110,30 +110,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00057"></a>00057 
 <a name="l00058"></a>00058       <span class="comment">// Metrics tracking and retrieval methods</span>
 <a name="l00059"></a>00059       <span class="comment">// Counters</span>
-<a name="l00060"></a>00060       <span class="keywordtype">size_t</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#a3a5a4dbb3cf5131c4c9a1a672a3ca843" title="method to increment a metric by 1">Increment</a>(<span class="keyword">const</span> std::string&amp; name);
-<a name="l00061"></a>00061       <span class="keywordtype">size_t</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#a3a5a4dbb3cf5131c4c9a1a672a3ca843" title="method to increment a metric by 1">Increment</a>(<span class="keyword">const</span> std::string&amp; name, uint64_t count);
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063       MetricsStore <a class="code" href="class_snyder_1_1_metrics_registry.html#a2ea085b0b4f10fb0d9f633920840ef40" title="method to get the MetricsStore backing counters. This will return by value thus locking the mutex for...">GetCounters</a>();
-<a name="l00064"></a>00064       <span class="keywordtype">void</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#afcbff5de2c8d173d841e2b419986dc1f" title="reset/clear all counters">ResetCounters</a>();
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066       <span class="comment">// Gauges</span>
-<a name="l00067"></a>00067       <span class="keywordtype">size_t</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#ab646ceb8edd0e965e0d1276c3ccd177d" title="method to record a gauge value">Gauge</a>(<span class="keyword">const</span> std::string&amp; name, uint64_t value);
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069       MetricsStore <a class="code" href="class_snyder_1_1_metrics_registry.html#a89edcafe865dffe83b4f2c75ea548bd4" title="method to get the MetricsStore backing gauges. This will return by value thus locking the mutex for t...">GetGauges</a>();
-<a name="l00070"></a>00070       <span class="keywordtype">void</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#af3301fae086bcd525543af470df66647" title="reset/clear all gauges">ResetGauges</a>();
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072     <span class="keyword">private</span>:
-<a name="l00073"></a>00073       <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>(<span class="keyword">const</span> <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00074"></a>00074       <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>(<a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>&amp;&amp;) = <span class="keyword">delete</span>;
-<a name="l00075"></a>00075       MetricsStore counterRegistry;
-<a name="l00076"></a>00076       MetricsStore gaugesRegistry;
-<a name="l00077"></a>00077       std::mutex counterMutex;
-<a name="l00078"></a>00078       std::mutex gaugesMutex;
-<a name="l00079"></a>00079   };
-<a name="l00080"></a>00080 
-<a name="l00081"></a>00081 }
+<a name="l00060"></a>00060       <span class="keywordtype">int</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#a65c9b1570d84b3add14bf2daa532ff53" title="method to increment a metric by 1">Increment</a>(<span class="keyword">const</span> std::string&amp; name);
+<a name="l00061"></a>00061       <span class="keywordtype">int</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#a65c9b1570d84b3add14bf2daa532ff53" title="method to increment a metric by 1">Increment</a>(<span class="keyword">const</span> std::string&amp; name, uint64_t count);
+<a name="l00062"></a>00062       <span class="keywordtype">int</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#a1a2224c3480757a288922e9f87158d5a" title="method to decrement a metric by 1. If the result would be negative, the counter is set to 0...">Decrement</a>(<span class="keyword">const</span> std::string&amp; name);
+<a name="l00063"></a>00063       <span class="keywordtype">int</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#a1a2224c3480757a288922e9f87158d5a" title="method to decrement a metric by 1. If the result would be negative, the counter is set to 0...">Decrement</a>(<span class="keyword">const</span> std::string&amp; name, uint64_t count);
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065       MetricsStore <a class="code" href="class_snyder_1_1_metrics_registry.html#a2ea085b0b4f10fb0d9f633920840ef40" title="method to get the MetricsStore backing counters. This will return by value thus locking the mutex for...">GetCounters</a>();
+<a name="l00066"></a>00066       <span class="keywordtype">void</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#afcbff5de2c8d173d841e2b419986dc1f" title="reset/clear all counters">ResetCounters</a>();
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068       <span class="comment">// Gauges</span>
+<a name="l00069"></a>00069       <span class="keywordtype">int</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#ad5b0a0ffcd5598fabf9a55346eb9a6f7" title="method to record a gauge value">Gauge</a>(<span class="keyword">const</span> std::string&amp; name, uint64_t value);
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071       MetricsStore <a class="code" href="class_snyder_1_1_metrics_registry.html#a89edcafe865dffe83b4f2c75ea548bd4" title="method to get the MetricsStore backing gauges. This will return by value thus locking the mutex for t...">GetGauges</a>();
+<a name="l00072"></a>00072       <span class="keywordtype">void</span> <a class="code" href="class_snyder_1_1_metrics_registry.html#af3301fae086bcd525543af470df66647" title="reset/clear all gauges">ResetGauges</a>();
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074     <span class="keyword">private</span>:
+<a name="l00075"></a>00075       <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>(<span class="keyword">const</span> <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00076"></a>00076       <a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>(<a class="code" href="class_snyder_1_1_metrics_registry.html" title="central metrics registry. You can have multiple of those and each instance will have their own set of...">MetricsRegistry</a>&amp;&amp;) = <span class="keyword">delete</span>;
+<a name="l00077"></a>00077       MetricsStore counterRegistry;
+<a name="l00078"></a>00078       MetricsStore gaugesRegistry;
+<a name="l00079"></a>00079       std::mutex counterMutex;
+<a name="l00080"></a>00080       std::mutex gaugesMutex;
+<a name="l00081"></a>00081   };
 <a name="l00082"></a>00082 
-<a name="l00083"></a>00083 <span class="preprocessor">#endif  // INCLUDE_SNYDER_H_</span>
+<a name="l00083"></a>00083 }
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085 <span class="preprocessor">#endif  // INCLUDE_SNYDER_H_</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -152,7 +154,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 27 2015 14:52:23 for snyder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 28 2015 19:19:59 for snyder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

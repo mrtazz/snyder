@@ -116,16 +116,20 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">reset/clear all metrics  <a href="#aebd9e3a749ccb47803de9e8664dad2c5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_snyder_1_1_metrics_snapshot.html">MetricsSnapshot</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#a4dc57944609954d4b0593bfc0f285705">Snapshot</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get a snapshot of the current state of metrics  <a href="#a4dc57944609954d4b0593bfc0f285705"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#a3a5a4dbb3cf5131c4c9a1a672a3ca843">Increment</a> (const std::string &amp;name)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">method to increment a metric by 1  <a href="#a3a5a4dbb3cf5131c4c9a1a672a3ca843"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#a5a3180a4904b136f6700a21ab46acf64">Increment</a> (const std::string &amp;name, uint64_t count)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">method to increment a metric by a given count  <a href="#a5a3180a4904b136f6700a21ab46acf64"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#a65c9b1570d84b3add14bf2daa532ff53">Increment</a> (const std::string &amp;name)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">method to increment a metric by 1  <a href="#a65c9b1570d84b3add14bf2daa532ff53"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#aecbb82547a834a90b96a445e74fb3112">Increment</a> (const std::string &amp;name, uint64_t count)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">method to increment a metric by a given count  <a href="#aecbb82547a834a90b96a445e74fb3112"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#a1a2224c3480757a288922e9f87158d5a">Decrement</a> (const std::string &amp;name)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">method to decrement a metric by 1. If the result would be negative, the counter is set to 0.  <a href="#a1a2224c3480757a288922e9f87158d5a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#a8e4dd4ce52a2fd92c838448e6ffe2ecf">Decrement</a> (const std::string &amp;name, uint64_t count)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">method to decrement a metric by a given count. If the result would be negative, the counter is set to 0.  <a href="#a8e4dd4ce52a2fd92c838448e6ffe2ecf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">MetricsStore&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#a2ea085b0b4f10fb0d9f633920840ef40">GetCounters</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">method to get the MetricsStore backing counters. This will return by value thus locking the mutex for the duration it takes to copy the data structure.  <a href="#a2ea085b0b4f10fb0d9f633920840ef40"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#afcbff5de2c8d173d841e2b419986dc1f">ResetCounters</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">reset/clear all counters  <a href="#afcbff5de2c8d173d841e2b419986dc1f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#ab646ceb8edd0e965e0d1276c3ccd177d">Gauge</a> (const std::string &amp;name, uint64_t value)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">method to record a gauge value  <a href="#ab646ceb8edd0e965e0d1276c3ccd177d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#ad5b0a0ffcd5598fabf9a55346eb9a6f7">Gauge</a> (const std::string &amp;name, uint64_t value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">method to record a gauge value  <a href="#ad5b0a0ffcd5598fabf9a55346eb9a6f7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">MetricsStore&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#a89edcafe865dffe83b4f2c75ea548bd4">GetGauges</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">method to get the MetricsStore backing gauges. This will return by value thus locking the mutex for the duration it takes to copy the data structure.  <a href="#a89edcafe865dffe83b4f2c75ea548bd4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_snyder_1_1_metrics_registry.html#af3301fae086bcd525543af470df66647">ResetGauges</a> ()</td></tr>
@@ -134,12 +138,75 @@ Public Member Functions</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>central metrics registry. You can have multiple of those and each instance will have their own set of metrics. </p>
 </div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="ab646ceb8edd0e965e0d1276c3ccd177d"></a><!-- doxytag: member="Snyder::MetricsRegistry::Gauge" ref="ab646ceb8edd0e965e0d1276c3ccd177d" args="(const std::string &amp;name, uint64_t value)" -->
+<a class="anchor" id="a1a2224c3480757a288922e9f87158d5a"></a><!-- doxytag: member="Snyder::MetricsRegistry::Decrement" ref="a1a2224c3480757a288922e9f87158d5a" args="(const std::string &amp;name)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t <a class="el" href="class_snyder_1_1_metrics_registry.html#ab646ceb8edd0e965e0d1276c3ccd177d">MetricsRegistry::Gauge</a> </td>
+          <td class="memname">int <a class="el" href="class_snyder_1_1_metrics_registry.html#a1a2224c3480757a288922e9f87158d5a">MetricsRegistry::Decrement</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>method to decrement a metric by 1. If the result would be negative, the counter is set to 0. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the counter to decrement</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>int 0 on success, 1 if count is out of range </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8e4dd4ce52a2fd92c838448e6ffe2ecf"></a><!-- doxytag: member="Snyder::MetricsRegistry::Decrement" ref="a8e4dd4ce52a2fd92c838448e6ffe2ecf" args="(const std::string &amp;name, uint64_t count)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_snyder_1_1_metrics_registry.html#a1a2224c3480757a288922e9f87158d5a">MetricsRegistry::Decrement</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>method to decrement a metric by a given count. If the result would be negative, the counter is set to 0. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the counter to increment </td></tr>
+    <tr><td class="paramname">count</td><td>integer to decrement the counter by</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>int 0 on success </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad5b0a0ffcd5598fabf9a55346eb9a6f7"></a><!-- doxytag: member="Snyder::MetricsRegistry::Gauge" ref="ad5b0a0ffcd5598fabf9a55346eb9a6f7" args="(const std::string &amp;name, uint64_t value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="class_snyder_1_1_metrics_registry.html#ad5b0a0ffcd5598fabf9a55346eb9a6f7">MetricsRegistry::Gauge</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>name</em>, </td>
@@ -167,7 +234,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>size_t 0 </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>int 0 on success, 1 if value is out of range </dd></dl>
 
 </div>
 </div>
@@ -209,12 +276,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3a5a4dbb3cf5131c4c9a1a672a3ca843"></a><!-- doxytag: member="Snyder::MetricsRegistry::Increment" ref="a3a5a4dbb3cf5131c4c9a1a672a3ca843" args="(const std::string &amp;name)" -->
+<a class="anchor" id="a65c9b1570d84b3add14bf2daa532ff53"></a><!-- doxytag: member="Snyder::MetricsRegistry::Increment" ref="a65c9b1570d84b3add14bf2daa532ff53" args="(const std::string &amp;name)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t <a class="el" href="class_snyder_1_1_metrics_registry.html#a3a5a4dbb3cf5131c4c9a1a672a3ca843">MetricsRegistry::Increment</a> </td>
+          <td class="memname">int <a class="el" href="class_snyder_1_1_metrics_registry.html#a65c9b1570d84b3add14bf2daa532ff53">MetricsRegistry::Increment</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
@@ -231,16 +298,16 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>size_t 0 </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>int 0 on success </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a5a3180a4904b136f6700a21ab46acf64"></a><!-- doxytag: member="Snyder::MetricsRegistry::Increment" ref="a5a3180a4904b136f6700a21ab46acf64" args="(const std::string &amp;name, uint64_t count)" -->
+<a class="anchor" id="aecbb82547a834a90b96a445e74fb3112"></a><!-- doxytag: member="Snyder::MetricsRegistry::Increment" ref="aecbb82547a834a90b96a445e74fb3112" args="(const std::string &amp;name, uint64_t count)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t <a class="el" href="class_snyder_1_1_metrics_registry.html#a3a5a4dbb3cf5131c4c9a1a672a3ca843">MetricsRegistry::Increment</a> </td>
+          <td class="memname">int <a class="el" href="class_snyder_1_1_metrics_registry.html#a65c9b1570d84b3add14bf2daa532ff53">MetricsRegistry::Increment</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>name</em>, </td>
@@ -268,7 +335,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>size_t 0 </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>int 0 on success </dd></dl>
 
 </div>
 </div>
@@ -370,7 +437,7 @@ Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 27 2015 14:52:23 for snyder by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 28 2015 19:19:59 for snyder by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
