@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.4.0 (10/28/2015)
+* add Decrement methods for counters
+
 ## v0.3.1 (10/27/2015)
 * fix header inclusion in packaging
 * add automated doc deploy
