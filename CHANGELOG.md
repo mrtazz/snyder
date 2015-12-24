@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.1 (12/24/2015)
+- add automatic package deploy via travis-ci
+- minor fixes for packaging and dependencies
+- document usage of Decrement() in README
+
 ## v0.4.0 (10/28/2015)
 * add Decrement methods for counters
 
