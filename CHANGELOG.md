@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.4.2 (12/24/2015)
+- add missing fpm dependency to travi-ci deploy
+
 ## v0.4.1 (12/24/2015)
 - add automatic package deploy via travis-ci
 - minor fixes for packaging and dependencies
