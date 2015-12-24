@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.4.3 (12/24/2015)
+- add missing package_cloud dependency to travi-ci deploy
+
 ## v0.4.2 (12/24/2015)
 - add missing fpm dependency to travi-ci deploy
 

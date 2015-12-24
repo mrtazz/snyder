@@ -5,6 +5,7 @@ compiler:
 script: ./autogen.sh && ./configure --enable-coverage && make test
 install:
 - gem install fpm
+- gem install package_cloud
 - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 before_script:
 - ./utils/build_gtest.sh
