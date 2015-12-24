@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.4.4 (12/24/2015)
+- only deploy from travis for gcc builds
+
 ## v0.4.3 (12/24/2015)
 - add missing package_cloud dependency to travi-ci deploy
 
