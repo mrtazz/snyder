@@ -14,11 +14,6 @@ AC_PROG_CXX
 AC_PROG_CC
 AC_PROG_INSTALL
 
-# FIXME: Replace `main' with a function in `-lgtest':
-AC_CHECK_LIB([gtest], [main])
-
-# Checks for header files.
-
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_INLINE
 AC_TYPE_SIZE_T

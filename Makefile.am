@@ -1,5 +1,5 @@
 ACLOCAL_AMFLAGS=-I m4
-CPPFLAGS=-Iinclude -Ivendor/gtest-1.7.0/include -Ivendor/jsoncpp-0.10.5/dist
+CPPFLAGS=-Iinclude
 check_PROGRAMS = test-program
 pkginclude_HEADERS = include/snyder/metrics_registry.h include/snyder/version.h
 BUILT_SOURCES = include/snyder/version.h
@@ -7,6 +7,7 @@ BUILT_SOURCES = include/snyder/version.h
 test_program_SOURCES = tests/test_metrics_registry_counters.cpp tests/test_metrics_registry_gauges.cpp tests/test_metrics_registry.cpp tests/tests.cpp
 test_program_LDADD = .libs/libsnyder.a
 test_program_LDFLAGS=-Lvendor/gtest-1.7.0/lib/.libs -lgtest
+test_program_CPPFLAGS=$(CPPFLAGS) -Ivendor/gtest-1.7.0/include -Ivendor/jsoncpp-0.10.5/dist
 
 lib_LTLIBRARIES=libsnyder.la
 libsnyder_la_SOURCES=source/metrics_registry.cpp
@@ -36,7 +37,9 @@ VERSION = $(shell git describe --tags --always --dirty)
 BUILDER = $(shell echo "`git config user.name` <`git config user.email`>")
 PKG_RELEASE ?= 1
 PROJECT_URL="https://github.com/mrtazz/$(NAME)"
-FPM_FLAGS= --name $(NAME) --version $(VERSION) --iteration $(PKG_RELEASE) --epoch 1 --license MIT --maintainer "$(BUILDER)" --url $(PROJECT_URL) --vendor mrtazz usr
+FPM_FLAGS= --name $(NAME) --version $(VERSION) --iteration $(PKG_RELEASE) \
+					 --epoch 1 --license MIT --maintainer "$(BUILDER)" --url $(PROJECT_URL) \
+					 --vendor mrtazz --description "metrics library for C++11" usr
 
 rpm:
 	  fpm -t rpm -s dir $(FPM_FLAGS)
@@ -45,6 +48,11 @@ deb:
 	  fpm -t deb -s dir $(FPM_FLAGS)
 
 packages: local-install rpm deb
+
+deploy-packages: packages
+	package_cloud push mrtazz/$(NAME)/el/7 *.rpm
+	package_cloud push mrtazz/$(NAME)/debian/wheezy *.deb
+	package_cloud push mrtazz/$(NAME)/ubuntu/trusty *.deb
 
 include/snyder/version.h:
 	m4 -I m4 --define=M4_SNYDER_VERSION=$(VERSION) version.h.m4 > $@
@@ -62,7 +70,7 @@ jekyll:
 	echo "markdown: redcarpet" >> docs/_config.yml
 	echo "---" > docs/index.md
 	echo "layout: project" >> docs/index.md
-	echo "title: snyder" >> docs/index.md
+	echo "title: $(NAME)" >> docs/index.md
 	echo "---" >> docs/index.md
 	cat README.md >> docs/index.md
 
