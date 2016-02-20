@@ -39,6 +39,7 @@ PKG_RELEASE ?= 1
 PROJECT_URL="https://github.com/mrtazz/$(NAME)"
 FPM_FLAGS= --name $(NAME) --version $(VERSION) --iteration $(PKG_RELEASE) \
 					 --epoch 1 --license MIT --maintainer "$(BUILDER)" --url $(PROJECT_URL) \
+					 --after-install utils/runldconfig.sh --after-remove utils/runldconfig.sh \
 					 --vendor mrtazz --description "metrics library for C++11" usr
 
 rpm:
